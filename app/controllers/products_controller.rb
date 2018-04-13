@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
-  # GET /products.json
+  #GET /products.json
   def index
     @products = Product.all
   end
@@ -25,12 +25,15 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
+    @products = Product.all
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        puts "success"
+        format.html { redirect_to products_path, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
+        puts "failed"
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end

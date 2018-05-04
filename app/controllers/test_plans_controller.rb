@@ -1,4 +1,5 @@
 class TestPlansController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_test_plan, only: [:show, :edit, :update, :destroy]
 
   # GET /test_plans
